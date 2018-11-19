@@ -35,7 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/Sources/CRegArchModel.o
+	${OBJECTDIR}/Sources/CRegArchModel.o \
+	${OBJECTDIR}/Sources/cCondVar.o
 
 
 # C Compiler Flags
@@ -66,6 +67,11 @@ ${OBJECTDIR}/Sources/CRegArchModel.o: Sources/CRegArchModel.cpp
 	${MKDIR} -p ${OBJECTDIR}/Sources
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/CRegArchModel.o Sources/CRegArchModel.cpp
+
+${OBJECTDIR}/Sources/cCondVar.o: Sources/cCondVar.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cCondVar.o Sources/cCondVar.cpp
 
 # Subprojects
 .build-subprojects:

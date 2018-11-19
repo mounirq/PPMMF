@@ -23,7 +23,7 @@ AS=as
 # Macros
 CND_PLATFORM=GNU-Linux-x86
 CND_DLIB_EXT=so
-CND_CONF=Debug
+CND_CONF=Release
 CND_DISTDIR=dist
 CND_BUILDDIR=build
 
@@ -35,8 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/Sources/CRegArchModel.o \
-	${OBJECTDIR}/Sources/cCondVar.o
+	${OBJECTDIR}/Sources/StdAfxVectorAndMatrix.o \
+	${OBJECTDIR}/Sources/cGSLMatrix.o \
+	${OBJECTDIR}/Sources/cGSLVector.o
 
 
 # C Compiler Flags
@@ -57,21 +58,26 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libProjectPPMMF.${CND_DLIB_EXT}
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libVectorAndMatrix.${CND_DLIB_EXT}
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libProjectPPMMF.${CND_DLIB_EXT}: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libVectorAndMatrix.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libProjectPPMMF.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libVectorAndMatrix.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
 
-${OBJECTDIR}/Sources/CRegArchModel.o: Sources/CRegArchModel.cpp 
+${OBJECTDIR}/Sources/StdAfxVectorAndMatrix.o: Sources/StdAfxVectorAndMatrix.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Sources
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/CRegArchModel.o Sources/CRegArchModel.cpp
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/StdAfxVectorAndMatrix.o Sources/StdAfxVectorAndMatrix.cpp
 
-${OBJECTDIR}/Sources/cCondVar.o: Sources/cCondVar.cpp 
+${OBJECTDIR}/Sources/cGSLMatrix.o: Sources/cGSLMatrix.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Sources
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cCondVar.o Sources/cCondVar.cpp
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cGSLMatrix.o Sources/cGSLMatrix.cpp
+
+${OBJECTDIR}/Sources/cGSLVector.o: Sources/cGSLVector.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cGSLVector.o Sources/cGSLVector.cpp
 
 # Subprojects
 .build-subprojects:
@@ -79,7 +85,7 @@ ${OBJECTDIR}/Sources/cCondVar.o: Sources/cCondVar.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libProjectPPMMF.${CND_DLIB_EXT}
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libVectorAndMatrix.${CND_DLIB_EXT}
 
 # Subprojects
 .clean-subprojects:
