@@ -33,3 +33,5 @@
 
 # Private file
 MyRegArchlib/nbproject/private
+/Error/dist/
+/Error/build/
