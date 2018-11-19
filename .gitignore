@@ -30,7 +30,6 @@
 *.exe
 *.out
 *.app
-/VectorAndMatrix/build/
-/VectorAndMatrix/dist/
-/Error/build/
-/Error/dist/
+
+# Private file
+MyRegArchlib/nbproject/private
