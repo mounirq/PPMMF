@@ -34,6 +34,8 @@ namespace RegArchLib {
 	cAbstResiduals* cNormResiduals::PtrCopy() const
 	{
 		// Complete
+            bool theSimulFlag = this->mtR == NULL ? false : true;
+            return new cNormResiduals(this->mDistrParameter, theSimulFlag);
 	}
 
 	/*!

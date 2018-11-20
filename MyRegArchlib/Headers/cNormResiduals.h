@@ -24,7 +24,7 @@ namespace RegArchLib {
 		cNormResiduals(const cDVector* theDistrParameter=NULL, bool theSimulFlag=true) ; ///< a simple constructor
 		virtual ~cNormResiduals() ; ///< a simple destructor
 		// Complete
-		// PtrCopy() const ; /// < Return a copy of *this
+		cAbstResiduals* PtrCopy() const ; /// < Return a copy of *this
 		void Print(ostream& theOut) const ; ///< print the distribution type
 		// Complete source		
 		void Generate(uint theNSample, cDVector& theYt) const ; ///< Draw a sample from residual distribution 
