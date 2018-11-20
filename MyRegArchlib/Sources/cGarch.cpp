@@ -22,7 +22,7 @@ namespace RegArchLib {
 	 * \fn cGarch::cGarch(cDVector& theGarch):cAbstCondVar(eGarch)
 	 * \param cDVector& theGarch theGarch: GARCH parameters
 	*/
-	cGarch::cGarch(cDVector& theGarch):cAbstCondVar(eGarch)
+	cGarch::cGarch(const cDVector& theGarch):cAbstCondVar(eGarch)
 	{
 		mvGarch = theGarch ;
 		MESS_CREAT("cGarch") ;
@@ -40,9 +40,9 @@ namespace RegArchLib {
 	 * \fn cAbstCondVar* cGarch::PtrCopy()
 	 */
 
-	cGarch::PtrCopy() const
+	cAbstCondVar* cGarch::PtrCopy() const
 	{
-		// Complete
+            return new cGarch(this->mvGarch);
 	}
 
 	/*!

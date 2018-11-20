@@ -25,7 +25,7 @@ namespace RegArchLib {
 		cConst(double theVal = 0.0L) ; ///< A simple constructor
 		virtual ~cConst() ; ///< A simple destructor
 		// Complete
-		// PtrCopy() const ; /// < Return a copy of *this
+		cAbstCondMean* PtrCopy() const ; /// < Return a copy of *this
 		void Delete(void) ;  ///< Free memory
 		void Print(ostream& theOut=cout) const ; ///< Print the parameters
 		void Set(double theValue, uint theIndex=0, uint theNumParam=0) ; ///< Set model parameters.

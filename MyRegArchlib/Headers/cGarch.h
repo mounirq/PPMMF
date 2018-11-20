@@ -23,10 +23,10 @@ namespace RegArchLib {
 		cDVector mvGarch ; ///< Vector of GARCH coefficients.
 	public :
 		cGarch(uint theNGarch=0) ; ///< A simple constructor
-		cGarch(cDVector& theGarch) ; ///< Another constructor
+		cGarch(const cDVector& theGarch) ; ///< Another constructor
 		virtual ~cGarch() ; ///< A simple destructor
 		// Complete
-		// PtrCopy() const ; /// < Return a copy of *this
+		cAbstCondVar* PtrCopy() const ; /// < Return a copy of *this
 		void Delete(void) ; /// Delete
 		void Print(ostream& theOut=cout) const ; ///< Print the parameters
 		void ReAlloc(uint theSize, uint theNumParam=0) ; ///< Allocation of the model parameters

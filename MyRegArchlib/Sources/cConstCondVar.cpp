@@ -34,9 +34,9 @@ namespace RegArchLib {
 	 * \fn cAbstCondVar* cConstCondVar::PtrCopy()
 	 */
 
-	cConstCondVar::PtrCopy() const
+	cAbstCondVar* cConstCondVar::PtrCopy() const
 	{
-		 // Complete
+            return new cConstCondVar(this->mvCste);
 	}
 
 	/*!

@@ -35,7 +35,7 @@ namespace RegArchLib {
 	{
 		// Complete
             bool theSimulFlag = this->mtR == NULL ? false : true;
-            return new cNormResiduals(this->mDistrParameter, theSimulFlag);
+            return new cNormResiduals(NULL, theSimulFlag);
 	}
 
 	/*!

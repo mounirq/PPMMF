@@ -170,9 +170,10 @@ namespace RegArchLib {
 	 * \param cCondMean& theSrc: source class
 	 */
 	cCondMean& cCondMean::operator =(cCondMean& theSrc)
-	{	// CompletSources/cCondMean.cpp:174:2: warning: « return » manquant dans une fonction devant retourner une valeur [-Wreturn-type]eSources/cCondMean.cpp:174:2: warning: « return » manquant dans une fonction devant retourner une valeur [-Wreturn-type]
-            cCondMean* returned = new cCondMean();
-            return *returned;
+	{            
+            mvNCondMean = theSrc.mvNCondMean;
+            mvCondMean = theSrc.mvCondMean;
+            return *this;
 	}
 
 	/*!
@@ -185,7 +186,7 @@ namespace RegArchLib {
 	double cCondMean::ComputeMean(uint theDate, const cRegArchValue& theData) const
 	{
 		// Complete	
-            return 0;
+            return 0; // A FINIR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	}
 
 	uint cCondMean::GetNParam(void) const

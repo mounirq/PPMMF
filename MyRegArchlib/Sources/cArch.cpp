@@ -19,6 +19,12 @@ namespace RegArchLib {
 		mvArch.ReAlloc(theNArch) ;
 		MESS_CREAT("cArch")
 	}
+        
+        cArch::cArch(const cDVector& theArch):cAbstCondVar(eArch)
+	{
+		mvArch = theArch ;
+		MESS_CREAT("cArch")
+	}
 
 	/*!
 	 * \fn cArch::~cArch()
@@ -32,11 +38,8 @@ namespace RegArchLib {
 	 * \fn cArch::PtrCopy()
 	 */
 	cAbstCondVar* cArch::PtrCopy() const
-	{
-		// complete
-            cArch * returned = new cArch();
-            return returned;
-            
+	{	            
+            return new cArch(this->mvArch);            
 	}
 
 	/*!

@@ -30,9 +30,9 @@ namespace RegArchLib {
 	/*!
 	 * \fn cAbstCondMean* cConst::PtrCopy()
 	 */
-	cConst::PtrCopy() const
+	cAbstCondMean* cConst::PtrCopy() const
 	{
-		// complete
+            return new cConst(this->mvConst);
 	}
 
 	/*!

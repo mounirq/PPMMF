@@ -28,7 +28,7 @@ namespace RegArchLib {
 		cAbstCondVar(eCondVarEnum theType = eNotKnown) ; ///< A simple constructor
 		virtual ~cAbstCondVar() ;  ///< A simple destructor
 		// Complete
-		// PtrCopy() const ; /// < Return a copy of *this
+		virtual cAbstCondVar* PtrCopy() const = 0 ; /// < Return a copy of *this
 		eCondVarEnum GetCondVarType(void) const ; ///< Return the variance type code
 		virtual void Delete(void) = 0 ; ///< delete
 		virtual void Print(ostream& theOut=cout) const = 0 ;  ///< Print the parameters

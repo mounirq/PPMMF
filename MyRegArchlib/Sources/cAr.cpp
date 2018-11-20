@@ -45,8 +45,7 @@ namespace RegArchLib {
 	cAbstCondMean* cAr::PtrCopy() const
 	{
 		// complete
-            cAr* returned = new cAr();
-            return returned;
+            return new cAr(this->mvAr);
 	}
 
 
@@ -135,7 +134,7 @@ namespace RegArchLib {
 	 */
 	double cAr::ComputeMean(uint theDate, const cRegArchValue& theData) const
 	{
-		// Complete	
+		// A Completer !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!           
             return 0;
 	}
 

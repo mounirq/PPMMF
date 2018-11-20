@@ -25,7 +25,7 @@ namespace RegArchLib {
 		cMa(const cDVector& theMa) ; ///< Another constructor
 		virtual ~cMa() ;  ///< A simple destructor
 		// Complete
-		// PtrCopy() const ; /// < Return a copy of *this
+		cAbstCondMean* PtrCopy() const ; /// < Return a copy of *this
 		void Delete(void) ; ///< Free memory
 		void Print(ostream& theOut=cout) const ; ///< Print the parameters
 		void ReAlloc(uint theSize, uint theNumParam=0) ; ///< Allocation of the model parameters

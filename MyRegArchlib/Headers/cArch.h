@@ -23,6 +23,7 @@ namespace RegArchLib {
 		cDVector mvArch ; ///< Vector of ARCH coefficients. 
 	public :
 		cArch(uint theNArch = 0) ; ///< A simple constructor
+                cArch(const cDVector& theArch);
 		virtual ~cArch() ; ///< A simple destructor
 		// Complete
 		cAbstCondVar* PtrCopy() const ; /// < Return a copy of *this

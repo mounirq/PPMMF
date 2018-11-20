@@ -42,9 +42,9 @@ namespace RegArchLib {
 	/*!
 	 * \fn cAbstCondMean* cMa::PtrCopy()
 	 */
-	cMa::PtrCopy() const
+	cAbstCondMean* cMa::PtrCopy() const
 	{
-		// complete
+            return new cMa(this->mvMa);
 	}
 
 	/*!
