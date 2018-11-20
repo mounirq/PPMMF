@@ -25,7 +25,6 @@ namespace RegArchLib {
 		cAr(uint theNAr = 0) ; ///< A simple constructor
 		cAr(const cDVector& theAr) ; ///< Another constructor
 		virtual ~cAr() ;  ///< aA simple destructor
-		// Complete
 		cAbstCondMean* PtrCopy() const ; /// < Return a copy of *this
 		void Delete(void) ; ///< Delete mvAr
 		void Print(ostream& theOut=cout) const ; ///< Print the parameters

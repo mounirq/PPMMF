@@ -24,7 +24,6 @@ namespace RegArchLib {
 		cMa(uint theNMa = 0) ; ///< A simple constructor
 		cMa(const cDVector& theMa) ; ///< Another constructor
 		virtual ~cMa() ;  ///< A simple destructor
-		// Complete
 		cAbstCondMean* PtrCopy() const ; /// < Return a copy of *this
 		void Delete(void) ; ///< Free memory
 		void Print(ostream& theOut=cout) const ; ///< Print the parameters
@@ -33,7 +32,6 @@ namespace RegArchLib {
 		void Set(double theValue, uint theIndex=0, uint theNumParam=0) ; ///< Set model parameters.
 		void Set(const cDVector& theVectParam, uint theNumParam=0) ; ///< Set model parameters.
 		double Get(uint theIndex=0, uint theNumParam=0) ;
-		// Complete source		
 		double ComputeMean(uint theDate, const cRegArchValue& theData) const ; /// Compute the conditional mean value
 		uint GetNParam(void) const ; ///< Number of parameters in that model part
 	protected :

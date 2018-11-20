@@ -27,7 +27,6 @@ namespace RegArchLib {
 	public :
 		cAbstCondMean(const eCondMeanEnum theType=eUnknown) ; ///< A constructor
 		virtual ~cAbstCondMean() ; ///< Destructor
-		// Complete
 		virtual cAbstCondMean* PtrCopy() const = 0; /// < Return a copy of *this
 		eCondMeanEnum GetCondMeanType(void) const ; ///< Return the mean type code
 		void SetCondMeanType(eCondMeanEnum theType)  ;

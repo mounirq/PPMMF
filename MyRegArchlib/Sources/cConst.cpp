@@ -117,7 +117,7 @@ namespace RegArchLib {
 	 */
 	double cConst::ComputeMean(uint theDate, const cRegArchValue& theData) const
 	{
-		// Complete	
+            return this->mvConst;
 	}
 
 	uint cConst::GetNParam(void) const
