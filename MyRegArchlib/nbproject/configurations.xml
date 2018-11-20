@@ -5,6 +5,24 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="Headers" displayName="Headers" projectFiles="true">
+        <itemPath>Headers/CRegArchModel.h</itemPath>
+        <itemPath>Headers/RegArchCompute.h</itemPath>
+        <itemPath>Headers/RegArchDef.h</itemPath>
+        <itemPath>Headers/StdAfxRegArchLib.h</itemPath>
+        <itemPath>Headers/cAbstCondMean.h</itemPath>
+        <itemPath>Headers/cAbstCondVar.h</itemPath>
+        <itemPath>Headers/cAbstResiduals.h</itemPath>
+        <itemPath>Headers/cAr.h</itemPath>
+        <itemPath>Headers/cArch.h</itemPath>
+        <itemPath>Headers/cCondMean.h</itemPath>
+        <itemPath>Headers/cCondVar.h</itemPath>
+        <itemPath>Headers/cConst.h</itemPath>
+        <itemPath>Headers/cConstCondVar.h</itemPath>
+        <itemPath>Headers/cGarch.h</itemPath>
+        <itemPath>Headers/cMa.h</itemPath>
+        <itemPath>Headers/cNormResiduals.h</itemPath>
+        <itemPath>Headers/cRegArchModel.h</itemPath>
+        <itemPath>Headers/cRegArchValue.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -16,9 +34,22 @@
                    projectFiles="true">
       <logicalFolder name="Sources" displayName="Sources" projectFiles="true">
         <itemPath>Sources/CRegArchModel.cpp</itemPath>
-        <itemPath>Headers/CRegArchModel.h</itemPath>
+        <itemPath>Sources/RegArchCompute.cpp</itemPath>
+        <itemPath>Sources/StdAfxRegArchLib.cpp</itemPath>
+        <itemPath>Sources/cAbstCondMean.cpp</itemPath>
+        <itemPath>Sources/cAbstCondVar.cpp</itemPath>
+        <itemPath>Sources/cAbstResiduals.cpp</itemPath>
+        <itemPath>Sources/cAr.cpp</itemPath>
+        <itemPath>Sources/cArch.cpp</itemPath>
+        <itemPath>Sources/cCondMean.cpp</itemPath>
         <itemPath>Sources/cCondVar.cpp</itemPath>
-        <itemPath>Headers/cCondVar.h</itemPath>
+        <itemPath>Sources/cConst.cpp</itemPath>
+        <itemPath>Sources/cConstCondVar.cpp</itemPath>
+        <itemPath>Sources/cGarch.cpp</itemPath>
+        <itemPath>Sources/cMa.cpp</itemPath>
+        <itemPath>Sources/cNormResiduals.cpp</itemPath>
+        <itemPath>Sources/cRegArchModel.cpp</itemPath>
+        <itemPath>Sources/cRegArchValue.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -46,14 +77,81 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <ccTool>
+          <incFile>
+            <pElem>Headers</pElem>
+          </incFile>
+        </ccTool>
       </compileType>
       <item path="Headers/CRegArchModel.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Headers/RegArchCompute.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/RegArchDef.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/StdAfxRegArchLib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cAbstCondMean.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cAbstCondVar.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cAbstResiduals.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cAr.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cArch.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cCondMean.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Headers/cCondVar.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cConst.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cConstCondVar.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cGarch.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cMa.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cNormResiduals.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cRegArchModel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cRegArchValue.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Sources/CRegArchModel.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="Sources/RegArchCompute.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/StdAfxRegArchLib.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cAbstCondMean.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cAbstCondVar.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cAbstResiduals.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cAr.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cArch.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cCondMean.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="Sources/cCondVar.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cConst.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cConstCondVar.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cGarch.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cMa.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cNormResiduals.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cRegArchModel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cRegArchValue.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="2">
@@ -78,11 +176,73 @@
       </compileType>
       <item path="Headers/CRegArchModel.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Headers/RegArchCompute.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/RegArchDef.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/StdAfxRegArchLib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cAbstCondMean.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cAbstCondVar.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cAbstResiduals.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cAr.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cArch.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cCondMean.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Headers/cCondVar.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cConst.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cConstCondVar.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cGarch.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cMa.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cNormResiduals.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cRegArchModel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Headers/cRegArchValue.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Sources/CRegArchModel.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="Sources/RegArchCompute.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/StdAfxRegArchLib.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cAbstCondMean.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cAbstCondVar.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cAbstResiduals.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cAr.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cArch.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cCondMean.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="Sources/cCondVar.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cConst.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cConstCondVar.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cGarch.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cMa.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cNormResiduals.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cRegArchModel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sources/cRegArchValue.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>

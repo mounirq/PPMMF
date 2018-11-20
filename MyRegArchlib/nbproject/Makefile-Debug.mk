@@ -36,7 +36,22 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Sources/CRegArchModel.o \
-	${OBJECTDIR}/Sources/cCondVar.o
+	${OBJECTDIR}/Sources/RegArchCompute.o \
+	${OBJECTDIR}/Sources/StdAfxRegArchLib.o \
+	${OBJECTDIR}/Sources/cAbstCondMean.o \
+	${OBJECTDIR}/Sources/cAbstCondVar.o \
+	${OBJECTDIR}/Sources/cAbstResiduals.o \
+	${OBJECTDIR}/Sources/cAr.o \
+	${OBJECTDIR}/Sources/cArch.o \
+	${OBJECTDIR}/Sources/cCondMean.o \
+	${OBJECTDIR}/Sources/cCondVar.o \
+	${OBJECTDIR}/Sources/cConst.o \
+	${OBJECTDIR}/Sources/cConstCondVar.o \
+	${OBJECTDIR}/Sources/cGarch.o \
+	${OBJECTDIR}/Sources/cMa.o \
+	${OBJECTDIR}/Sources/cNormResiduals.o \
+	${OBJECTDIR}/Sources/cRegArchModel.o \
+	${OBJECTDIR}/Sources/cRegArchValue.o
 
 
 # C Compiler Flags
@@ -66,12 +81,87 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libMyRegArchlib.${CND_DLIB_EXT}: ${OB
 ${OBJECTDIR}/Sources/CRegArchModel.o: Sources/CRegArchModel.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Sources
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/CRegArchModel.o Sources/CRegArchModel.cpp
+	$(COMPILE.cc) -g -include Headers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/CRegArchModel.o Sources/CRegArchModel.cpp
+
+${OBJECTDIR}/Sources/RegArchCompute.o: Sources/RegArchCompute.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -include Headers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/RegArchCompute.o Sources/RegArchCompute.cpp
+
+${OBJECTDIR}/Sources/StdAfxRegArchLib.o: Sources/StdAfxRegArchLib.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -include Headers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/StdAfxRegArchLib.o Sources/StdAfxRegArchLib.cpp
+
+${OBJECTDIR}/Sources/cAbstCondMean.o: Sources/cAbstCondMean.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -include Headers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cAbstCondMean.o Sources/cAbstCondMean.cpp
+
+${OBJECTDIR}/Sources/cAbstCondVar.o: Sources/cAbstCondVar.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -include Headers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cAbstCondVar.o Sources/cAbstCondVar.cpp
+
+${OBJECTDIR}/Sources/cAbstResiduals.o: Sources/cAbstResiduals.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -include Headers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cAbstResiduals.o Sources/cAbstResiduals.cpp
+
+${OBJECTDIR}/Sources/cAr.o: Sources/cAr.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -include Headers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cAr.o Sources/cAr.cpp
+
+${OBJECTDIR}/Sources/cArch.o: Sources/cArch.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -include Headers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cArch.o Sources/cArch.cpp
+
+${OBJECTDIR}/Sources/cCondMean.o: Sources/cCondMean.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -include Headers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cCondMean.o Sources/cCondMean.cpp
 
 ${OBJECTDIR}/Sources/cCondVar.o: Sources/cCondVar.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Sources
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cCondVar.o Sources/cCondVar.cpp
+	$(COMPILE.cc) -g -include Headers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cCondVar.o Sources/cCondVar.cpp
+
+${OBJECTDIR}/Sources/cConst.o: Sources/cConst.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -include Headers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cConst.o Sources/cConst.cpp
+
+${OBJECTDIR}/Sources/cConstCondVar.o: Sources/cConstCondVar.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -include Headers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cConstCondVar.o Sources/cConstCondVar.cpp
+
+${OBJECTDIR}/Sources/cGarch.o: Sources/cGarch.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -include Headers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cGarch.o Sources/cGarch.cpp
+
+${OBJECTDIR}/Sources/cMa.o: Sources/cMa.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -include Headers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cMa.o Sources/cMa.cpp
+
+${OBJECTDIR}/Sources/cNormResiduals.o: Sources/cNormResiduals.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -include Headers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cNormResiduals.o Sources/cNormResiduals.cpp
+
+${OBJECTDIR}/Sources/cRegArchModel.o: Sources/cRegArchModel.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -include Headers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cRegArchModel.o Sources/cRegArchModel.cpp
+
+${OBJECTDIR}/Sources/cRegArchValue.o: Sources/cRegArchValue.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -include Headers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cRegArchValue.o Sources/cRegArchValue.cpp
 
 # Subprojects
 .build-subprojects:
