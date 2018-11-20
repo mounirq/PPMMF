@@ -25,7 +25,7 @@ namespace RegArchLib {
 		cArch(uint theNArch = 0) ; ///< A simple constructor
 		virtual ~cArch() ; ///< A simple destructor
 		// Complete
-		// PtrCopy() const ; /// < Return a copy of *this
+		cAbstCondVar* PtrCopy() const ; /// < Return a copy of *this
 		void Delete(void) ; ///< Free memory
 		void Print(ostream& theOut=cout) const ; ///< Print the ARCH(p) parameters
 		void Set(double theValue, uint theIndex=0, uint theNumParam=0) ; ///< Set model parameters.

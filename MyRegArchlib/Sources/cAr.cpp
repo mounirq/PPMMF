@@ -42,9 +42,11 @@ namespace RegArchLib {
 	/*!
 	 * \fn cAr::PtrCopy()
 	 */
-	cAr::PtrCopy() const
+	cAbstCondMean* cAr::PtrCopy() const
 	{
 		// complete
+            cAr* returned = new cAr();
+            return returned;
 	}
 
 
@@ -134,6 +136,7 @@ namespace RegArchLib {
 	double cAr::ComputeMean(uint theDate, const cRegArchValue& theData) const
 	{
 		// Complete	
+            return 0;
 	}
 
 	uint cAr::GetNParam(void) const

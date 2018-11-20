@@ -4,6 +4,7 @@
 // et sont rarement modifies
 //
 
+#include <vector>
 #include <cmath>
 #include <iostream>
 #include <gsl/gsl_vector.h>

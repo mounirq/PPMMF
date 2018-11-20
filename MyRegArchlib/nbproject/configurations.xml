@@ -76,9 +76,11 @@
       </toolsSet>
       <compileType>
         <ccTool>
-          <incFile>
+          <incDir>
             <pElem>Headers</pElem>
-          </incFile>
+            <pElem>../Error/Headers</pElem>
+            <pElem>../VectorAndMatrix/Headers</pElem>
+          </incDir>
         </ccTool>
       </compileType>
       <item path="Headers/RegArchCompute.h" ex="false" tool="3" flavor2="0">
@@ -147,6 +149,13 @@
       </item>
       <item path="Sources/cRegArchValue.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <folder path="HeaderFiles/Headers">
+        <ccTool>
+          <incFile>
+            <pElem>/home/mounirq/3A/PPMMF/PPMMF/MyRegArchlib/Headers</pElem>
+          </incFile>
+        </ccTool>
+      </folder>
     </conf>
     <conf name="Release" type="2">
       <toolsSet>
