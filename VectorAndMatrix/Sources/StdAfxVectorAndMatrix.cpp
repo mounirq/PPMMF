@@ -1,8 +1,8 @@
-// stdafx.cpp : fichier source incluant simplement les fichiers Include standard
-// VectorAndMatrix.pch représente l'en-tête précompilé
-// stdafx.obj contient les informations de type précompilées
+// stdafx.cppÂ : fichier source incluant simplement les fichiers Include standard
+// VectorAndMatrix.pch reprÃ©sente l'en-tÃªte prÃ©compilÃ©
+// stdafx.obj contient les informations de type prÃ©compilÃ©es
 
 #include "StdAfxVectorAndMatrix.h"
 
-// TODO: faites référence aux en-têtes supplémentaires nécessaires dans STDAFX.H
+// TODO: faites rÃ©fÃ©rence aux en-tÃªtes supplÃ©mentaires nÃ©cessaires dans STDAFX.H
 // absents de ce fichier
