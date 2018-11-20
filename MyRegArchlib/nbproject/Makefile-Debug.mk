@@ -35,7 +35,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/Sources/CRegArchModel.o \
 	${OBJECTDIR}/Sources/RegArchCompute.o \
 	${OBJECTDIR}/Sources/StdAfxRegArchLib.o \
 	${OBJECTDIR}/Sources/cAbstCondMean.o \
@@ -77,11 +76,6 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libMyRegArchlib.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libMyRegArchlib.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
-
-${OBJECTDIR}/Sources/CRegArchModel.o: Sources/CRegArchModel.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Sources
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -include Headers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/CRegArchModel.o Sources/CRegArchModel.cpp
 
 ${OBJECTDIR}/Sources/RegArchCompute.o: Sources/RegArchCompute.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Sources

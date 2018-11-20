@@ -5,7 +5,6 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="Headers" displayName="Headers" projectFiles="true">
-        <itemPath>Headers/CRegArchModel.h</itemPath>
         <itemPath>Headers/RegArchCompute.h</itemPath>
         <itemPath>Headers/RegArchDef.h</itemPath>
         <itemPath>Headers/StdAfxRegArchLib.h</itemPath>
@@ -33,7 +32,6 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="Sources" displayName="Sources" projectFiles="true">
-        <itemPath>Sources/CRegArchModel.cpp</itemPath>
         <itemPath>Sources/RegArchCompute.cpp</itemPath>
         <itemPath>Sources/StdAfxRegArchLib.cpp</itemPath>
         <itemPath>Sources/cAbstCondMean.cpp</itemPath>
@@ -83,8 +81,6 @@
           </incFile>
         </ccTool>
       </compileType>
-      <item path="Headers/CRegArchModel.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Headers/RegArchCompute.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Headers/RegArchDef.h" ex="false" tool="3" flavor2="0">
@@ -118,8 +114,6 @@
       <item path="Headers/cRegArchModel.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Headers/cRegArchValue.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Sources/CRegArchModel.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Sources/RegArchCompute.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -174,8 +168,6 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="Headers/CRegArchModel.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Headers/RegArchCompute.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Headers/RegArchDef.h" ex="false" tool="3" flavor2="0">
@@ -209,8 +201,6 @@
       <item path="Headers/cRegArchModel.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Headers/cRegArchValue.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Sources/CRegArchModel.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Sources/RegArchCompute.cpp" ex="false" tool="1" flavor2="0">
       </item>
