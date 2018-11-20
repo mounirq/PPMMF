@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux-x86
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux-x86
-CND_ARTIFACT_NAME_Debug=libProjectPPMMF.so
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/libProjectPPMMF.so
+CND_ARTIFACT_NAME_Debug=libMyRegArchlib.so
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/libMyRegArchlib.so
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Debug=libProjectPPMMF.so.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/libProjectPPMMF.so.tar
+CND_PACKAGE_NAME_Debug=libMyRegArchlib.so.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/libMyRegArchlib.so.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux-x86
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux-x86
-CND_ARTIFACT_NAME_Release=libProjectPPMMF.so
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/libProjectPPMMF.so
+CND_ARTIFACT_NAME_Release=libMyRegArchlib.so
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/libMyRegArchlib.so
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Release=libProjectPPMMF.so.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/libProjectPPMMF.so.tar
+CND_PACKAGE_NAME_Release=libMyRegArchlib.so.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/libMyRegArchlib.so.tar
 #
 # include compiler specific variables
 #
