@@ -139,7 +139,7 @@ namespace RegArchLib {
             uint size = this->mvAr.GetSize();
             for (uint i=0; i<size; i++)
             {
-                if (theDate -i >= 0)
+                if (theDate  >= i)
                 {
                     result += this->mvAr[i] * theData.mYt[theDate - i];
                 }

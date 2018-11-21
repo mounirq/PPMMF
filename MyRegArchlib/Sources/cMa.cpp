@@ -133,7 +133,7 @@ namespace RegArchLib {
             uint size = this->mvMa.GetSize();
             for (uint i=0; i<size; i++)
             {
-                if (theDate - i >= 0)                    
+                if (theDate >= i)                    
                 {
                     result += this->mvMa[i] * theData.mUt[theDate-i];
                 }
