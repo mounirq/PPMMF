@@ -25,7 +25,6 @@ namespace RegArchLib {
 		cArch(uint theNArch = 0) ; ///< A simple constructor
                 cArch(const cDVector& theArch);
 		virtual ~cArch() ; ///< A simple destructor
-		// Complete
 		cAbstCondVar* PtrCopy() const ; /// < Return a copy of *this
 		void Delete(void) ; ///< Free memory
 		void Print(ostream& theOut=cout) const ; ///< Print the ARCH(p) parameters

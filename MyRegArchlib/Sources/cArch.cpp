@@ -153,7 +153,15 @@ namespace RegArchLib {
 	*/
 	double cArch::ComputeVar(uint theDate, const cRegArchValue& theDatas) const
 	{
-		// Complete	
+            double somme = 0;
+            for (uint i=0; i< theDatas.mUt.GetSize(); i++)
+            {
+                if (theDate >= i)
+                {
+                    somme += this->mvArch[i] * theDatas.mUt[theDate - i] * theDatas.mUt[theDate - i];
+                }
+            }
+            return somme;
 	}
 
 	uint cArch::GetNParam(void) const

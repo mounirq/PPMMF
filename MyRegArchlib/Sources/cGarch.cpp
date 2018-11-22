@@ -162,7 +162,15 @@ namespace RegArchLib {
 	*/
 	double cGarch::ComputeVar(uint theDate, const cRegArchValue& theData) const 
 	{
-		// Complete	
+            double somme = 0;
+            for (uint i=0; i< theData.mHt.GetSize(); i++)
+            {
+                if (theDate >= i)
+                {
+                    somme += this->mvGarch[i] * theData.mHt[theDate - i];
+                }
+            }
+            return somme;	
 	}
 
 	uint cGarch::GetNParam(void) const
