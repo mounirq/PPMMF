@@ -73,17 +73,22 @@ int main(int argc, char* argv[])
 	}
 	cout << "Moyennes conditionnelles ARMA pur gaussien : " << endl ;
 	myMeans.Print();
-/*
-	// Simulation
+
+	// Simulation        
 	uint myNSample = 10;
-	cRegArchValue mySimulData;
+	cRegArchValue mySimulData(1);
 	cDVector mySimulVector(myNSample);
-	RegArchLib::RegArchSimul() ;
+        mySimulData.mYt[0] = 0;
+        mySimulData.mEpst[0] = 0;
+        mySimulData.mHt[0] = 0;
+        mySimulData.mMt[0] = 0;
+        mySimulData.mUt[0] = 0;
+	RegArchLib::RegArchSimul(1, mySimulData, myCondMeanArma, myCondVar, myNormResid) ;
 	cout << "Valeurs simulees : " << endl ;
 	mySimulVector = mySimulData.mYt;
 	mySimulVector.Print();
         
-        // Calcul de vraisemblance
+/*       // Calcul de vraisemblance
         double myLoglikelihood = 0.;
         myLoglikelihood = RegArchLLH(myModelArma, myGivenValue);
         cout << "Log-vraisemblance : " << myLoglikelihood << endl;

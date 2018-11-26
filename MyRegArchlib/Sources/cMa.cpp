@@ -131,11 +131,11 @@ namespace RegArchLib {
 	{
             double result = 0;
             uint size = this->mvMa.GetSize();
-            for (uint i=0; i<size; i++)
+            for (uint i=1; i<=size; i++)
             {
                 if (theDate >= i)                    
                 {
-                    result += this->mvMa[i] * theData.mUt[theDate-i];
+                    result += this->mvMa[i-1] * theData.mUt[theDate-i];
                 }
             }
             return result;

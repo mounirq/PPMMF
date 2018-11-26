@@ -137,11 +137,11 @@ namespace RegArchLib {
             
             double result = 0;
             uint size = this->mvAr.GetSize();
-            for (uint i=0; i<size; i++)
+            for (uint i=1; i<=size; i++)
             {
                 if (theDate  >= i)
                 {
-                    result += this->mvAr[i] * theData.mYt[theDate - i];
+                    result += this->mvAr[i-1] * theData.mYt[theDate - i];
                 }
             }
             return result;
