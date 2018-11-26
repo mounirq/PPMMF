@@ -30,6 +30,14 @@ int main(int argc, char* argv[])
 	cMa myMa(2) ;
 	myMa.Set(0.8, 0) ;
 	myMa.Set(0.6, 1) ;
+        
+        cGarch myGarch(2);
+        myGarch.Set(0.8, 0);
+        myGarch.Set(0.6, 1);
+        
+        cArch myArch(2);
+        myArch.Set(0.8, 0);
+        myArch.Set(-0.2, 1);
 	
 	cCondMean myCondMeanArma ;
 	myCondMeanArma.SetOneMean(0, myConst) ;
@@ -40,6 +48,8 @@ int main(int argc, char* argv[])
 
 	cCondVar myCondVar ;
 	myCondVar.SetOneVar(0, myConstVar) ;
+        myCondVar.SetOneVar(1, myGarch);
+        myCondVar.SetOneVar(2, myArch);
 	
 	cNormResiduals myNormResid ;
 
@@ -62,19 +72,24 @@ int main(int argc, char* argv[])
 		myGivenValue.mYt[t] = t;
 	}
 
-	cDVector myMeans(myNData);	
+	cDVector myMeans(myNData);
+        cDVector myVars(myNData);
         // Moyennes conditionnelles
 
 	for(uint t=0; t < myGivenValue.mYt.GetSize(); t++)
 	{
 		myMeans[t] = myCondMeanArma.ComputeMean(t, myGivenValue);
-		myGivenValue.mUt[t] = myGivenValue.mYt[t] - myMeans[t];
+                myGivenValue.mUt[t] = myGivenValue.mYt[t] - myMeans[t];
 		myGivenValue.mMt[t] = myMeans[t];
+                
+                myVars[t] = myCondVar.ComputeVar(t, myGivenValue);
 	}
 	cout << "Moyennes conditionnelles ARMA pur gaussien : " << endl ;
 	myMeans.Print();
 
-	// Simulation        
+        cout << "\n"<< "Variances conditionnelles ARMA pur gaussien : " << endl ;
+	myVars.Print();
+/* 	// Simulation        
 	uint myNSample = 10;
 	cRegArchValue mySimulData(1);
 	cDVector mySimulVector(myNSample);
@@ -88,7 +103,7 @@ int main(int argc, char* argv[])
 	mySimulVector = mySimulData.mYt;
 	mySimulVector.Print();
         
-/*       // Calcul de vraisemblance
+      // Calcul de vraisemblance
         double myLoglikelihood = 0.;
         myLoglikelihood = RegArchLLH(myModelArma, myGivenValue);
         cout << "Log-vraisemblance : " << myLoglikelihood << endl;

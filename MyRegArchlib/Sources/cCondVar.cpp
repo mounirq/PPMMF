@@ -188,7 +188,12 @@ namespace RegArchLib {
 	 */
 	double cCondVar::ComputeVar(uint theDate, const cRegArchValue& theData) const
 	{
-		// Complete	
+		double result = 0;
+                for (uint i=0; i<mvNCondVar; i++)
+                {
+                    result += mvCondVar[i]->ComputeVar(theDate, theData);
+                }
+                return result; 	
 	}
 
 	uint cCondVar::GetNParam(void) const
