@@ -14,6 +14,6 @@
 #include <iostream>
 #include <ostream>
 #include <gsl/gsl_cdf.h>
-//#include "../../MyRegArchlib/Headers/StdAfxRegArchLib.h"
+
 #include "StdAfxRegArchLib.h"
 // TODO: faites reference ici aux en-tetes supplementaires necessaires au programme
