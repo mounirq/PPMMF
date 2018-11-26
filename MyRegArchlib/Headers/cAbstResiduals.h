@@ -33,7 +33,6 @@ namespace RegArchLib {
 	
 		cAbstResiduals(eDistrTypeEnum theDistr, cDVector* theDistrParam=NULL, bool theSimulFlag=true) ; ///< A simple constructor
 		virtual ~cAbstResiduals() ; ///< A simple destructor
-		// Complete
 		virtual cAbstResiduals* PtrCopy() const = 0; /// < Return a copy of *this
 		void Delete(void) ; ///< Delete
 		eDistrTypeEnum GetDistrType(void) const ; ///< Return the distribution type
