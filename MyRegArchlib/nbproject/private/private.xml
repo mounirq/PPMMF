@@ -7,10 +7,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/mounirq/3A/PPMMF/PPMMF/ProjectPPMMF/Headers/CRegArchModel.h</file>
-            <file>file:/home/mounirq/3A/PPMMF/PPMMF/ProjectPPMMF/Sources/CRegArchModel.cpp</file>
-            <file>file:/home/mounirq/3A/PPMMF/PPMMF/ProjectPPMMF/Headers/cCondVar.h</file>
-            <file>file:/home/mounirq/3A/PPMMF/PPMMF/ProjectPPMMF/Sources/cCondVar.cpp</file>
+            <file>file:/home/mounirq/3A/PPMMF/PPMMF/MyRegArchlib/Sources/cAr.cpp</file>
+            <file>file:/home/mounirq/3A/PPMMF/PPMMF/MyRegArchlib/Sources/cArch.cpp</file>
         </group>
     </open-files>
 </project-private>
