@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
 	myAr.Print() ;
 	
 	cMa myMa(2) ;
-	myMa.Set(0.8, 0) ;
+        myMa.Set(0.8, 0) ;
 	myMa.Set(0.6, 1) ;
 	
 	cCondMean myCondMeanArma ;
@@ -62,13 +62,14 @@ int main(int argc, char* argv[])
 	}
 	cDVector myMeans(myNData);	
         // Moyennes conditionnelles
-
+        
 	for(uint t=0; t < myGivenValue.mYt.GetSize(); t++)
 	{
 		myMeans[t] = myCondMeanArma.ComputeMean(t, myGivenValue);
 		myGivenValue.mUt[t] = myGivenValue.mYt[t] - myMeans[t];
 		myGivenValue.mMt[t] = myMeans[t];
 	}
+        
 	cout << "Moyennes conditionnelles ARMA pur gaussien: " << endl ;
 	myMeans.Print();
 
