@@ -83,27 +83,38 @@ int main(int argc, char* argv[])
 		myGivenValue.mMt[t] = myMeans[t];
                 
                 myVars[t] = myCondVar.ComputeVar(t, myGivenValue);
-	}
+                myGivenValue.mHt[t] = myVars[t];
+	} 
+        // TESTS SANS ALEAS pour u(t)        
 	cout << "Moyennes conditionnelles ARMA pur gaussien : " << endl ;
 	myMeans.Print();
 
         cout << "\n"<< "Variances conditionnelles ARMA pur gaussien : " << endl ;
 	myVars.Print();
-/* 	// Simulation        
+        
+       /* // TESTS de l'aléa 
+        cout << "\n Vecteurs résidus:\n";
+        cDVector vecteurResidus(100);
+        myNormResid.Generate(100, vecteurResidus);
+        vecteurResidus.Print();*/
+        
+	// Simulation        
 	uint myNSample = 10;
 	cRegArchValue mySimulData(1);
 	cDVector mySimulVector(myNSample);
         mySimulData.mYt[0] = 0;
-        mySimulData.mEpst[0] = 0;
-        mySimulData.mHt[0] = 0;
-        mySimulData.mMt[0] = 0;
-        mySimulData.mUt[0] = 0;
+        mySimulData.mEpst[0] = -0.1;
+        mySimulData.mHt[0] = 1;
+        mySimulData.mMt[0] = 0.1;
+        mySimulData.mUt[0] = -1.726;
 	RegArchLib::RegArchSimul(1, mySimulData, myCondMeanArma, myCondVar, myNormResid) ;
+        cout << "\nPrint Residus : \n";
+        mySimulData.mEpst.Print();
 	cout << "Valeurs simulees : " << endl ;
 	mySimulVector = mySimulData.mYt;
 	mySimulVector.Print();
         
-      // Calcul de vraisemblance
+ /*     // Calcul de vraisemblance
         double myLoglikelihood = 0.;
         myLoglikelihood = RegArchLLH(myModelArma, myGivenValue);
         cout << "Log-vraisemblance : " << myLoglikelihood << endl;
