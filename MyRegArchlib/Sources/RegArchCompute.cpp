@@ -42,16 +42,23 @@
         
         double RegArchLLH(const cRegArchModel& myModelArma, const cRegArchValue& myGivenValue)
         {
+                       
             uint T = myGivenValue.mYt.GetSize();
+            
             double sum_h = 0;
             double sum_logV = 0;
-            
-            for(uint i = 0; i < T; i++){
-                sum_h += std::log(myGivenValue.mHt[i]);
-                sum_logV += myModelArma.mResids->LogDensity(myGivenValue.mEpst[i]); 
+            for(uint t = 0; t < T; t++){
+                
+                myGivenValue.mMt[t] = myModelArma.mMean->ComputeMean(t, myGivenValue);
+                myGivenValue.mUt[t] = myGivenValue.mYt[t] - myGivenValue.mMt[t];
+                myGivenValue.mHt[t] = myModelArma.mVar->ComputeVar(t, myGivenValue);
+                myGivenValue.mEpst[t] = (myGivenValue.mYt[t] - myGivenValue.mMt[t])/(std::sqrt(myGivenValue.mHt[t]));
+                
+                sum_h += std::log(myGivenValue.mHt[t]);
+                sum_logV += myModelArma.mResids->LogDensity(myGivenValue.mEpst[t]); 
             }
             
-            return sum_logV - (1/2) * sum_h;
+            return (sum_logV - 0.5 * sum_h);
         }
 
 } //namespace

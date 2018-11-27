@@ -110,7 +110,7 @@ int main(int argc, char* argv[])
         cRegArchModel modelVide;
         modelVide.SetMean(myCondMeanArma) ;
 	modelVide.SetVar(myCondVar) ;
-	RegArchLib::RegArchSimul(3, mySimulData, modelVide) ;
+	RegArchLib::RegArchSimul(3, mySimulData, myModelArma) ;
         cout << "\nPrint Residus : \n";
         mySimulData.mEpst.Print();
         cout << "\nValeurs h(t)\n";
@@ -123,11 +123,11 @@ int main(int argc, char* argv[])
 	mySimulVector = mySimulData.mYt;
 	mySimulVector.Print();
         
- /*     // Calcul de vraisemblance
+        // Calcul de vraisemblance
         double myLoglikelihood = 0.;
         myLoglikelihood = RegArchLLH(myModelArma, myGivenValue);
-        cout << "Log-vraisemblance : " << myLoglikelihood << endl;
-*/
+        cout << "\nLog-vraisemblance : " << myLoglikelihood << endl;
+        
 	return 0 ;
 
 
