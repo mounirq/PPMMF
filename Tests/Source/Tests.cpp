@@ -86,11 +86,11 @@ int main(int argc, char* argv[])
                 myGivenValue.mHt[t] = myVars[t];
 	} 
         // TESTS SANS ALEAS pour u(t)        
-	cout << "Moyennes conditionnelles ARMA pur gaussien : " << endl ;
+	/*cout << "Moyennes conditionnelles ARMA pur gaussien : " << endl ;
 	myMeans.Print();
 
         cout << "\n"<< "Variances conditionnelles ARMA pur gaussien : " << endl ;
-	myVars.Print();
+	myVars.Print();*/
         
        /* // TESTS de l'aléa 
         cout << "\n Vecteurs résidus:\n";
@@ -102,15 +102,24 @@ int main(int argc, char* argv[])
 	uint myNSample = 10;
 	cRegArchValue mySimulData(1);
 	cDVector mySimulVector(myNSample);
-        mySimulData.mYt[0] = 0;
+        /*mySimulData.mYt[0] = 0;
         mySimulData.mEpst[0] = -0.1;
         mySimulData.mHt[0] = 1;
         mySimulData.mMt[0] = 0.1;
-        mySimulData.mUt[0] = -1.726;
-	RegArchLib::RegArchSimul(1, mySimulData, myCondMeanArma, myCondVar, myNormResid) ;
+        mySimulData.mUt[0] = -1.726;*/
+        cRegArchModel modelVide;
+        modelVide.SetMean(myCondMeanArma) ;
+	modelVide.SetVar(myCondVar) ;
+	RegArchLib::RegArchSimul(3, mySimulData, modelVide) ;
         cout << "\nPrint Residus : \n";
         mySimulData.mEpst.Print();
-	cout << "Valeurs simulees : " << endl ;
+        cout << "\nValeurs h(t)\n";
+        mySimulData.mHt.Print();
+        cout << "\nValeurs u(t)\n";
+        mySimulData.mUt.Print();
+        cout << "\nValeurs Esperance\n";
+        mySimulData.mMt.Print();
+	cout << "\nValeurs simulees : \n" << endl ;
 	mySimulVector = mySimulData.mYt;
 	mySimulVector.Print();
         

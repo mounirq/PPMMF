@@ -14,10 +14,8 @@
 */
 namespace RegArchLib {
 // please complete function profile
-extern _DLLEXPORT_ void RegArchSimul(uint t, cRegArchValue &vectorPast, const cCondMean mean, const cCondVar var, const cAbstResiduals& residus) ; ///< Simulation of a general RegArch Model
-
 extern _DLLEXPORT_ double RegArchLLH(cRegArchModel myModelArma, cRegArchValue myGivenValue);
-
+extern _DLLEXPORT_ void RegArchSimul(uint t, cRegArchValue &vectorPast, const cRegArchModel& model) ; ///< Simulation of a general RegArch Model
 }
 
 #endif //_REGARCHCOMPUTE_H_
