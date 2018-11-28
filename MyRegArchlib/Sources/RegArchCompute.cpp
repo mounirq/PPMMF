@@ -51,6 +51,7 @@
 	 * \param const cRegArchModel &myModelArma: the model ARMA which will compute conditional mean, var and residuals
          * \param const cRegArchValue &myGivenValueOld: Object where the (Yt) are stored
          * \brief Compute the log-likelyhood of (Yt)
+         * \details myGivenValueOld is only used to get the (Yt). It is not filled during the log-likelyhood computation
 	 */
         double RegArchLLH(const cRegArchModel& myModelArma, const cRegArchValue& myGivenValueOld)
         {
