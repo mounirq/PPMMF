@@ -57,7 +57,6 @@ namespace RegArchLib {
 	
 	void cNormResiduals::Generate(uint theNSample, cDVector& theYt) const 
 	{
-		// Completed	
             theYt.ReAlloc(theNSample);
             for (int i=0; i<theNSample; i++){
                 theYt[i] = gsl_ran_gaussian(this->mtR, 1);
@@ -71,7 +70,6 @@ namespace RegArchLib {
 	 */
 	double cNormResiduals::LogDensity(double theX) const
 	{
-		// Completed	
             return std::log(gsl_ran_gaussian_pdf(theX, 1));
 	}
 

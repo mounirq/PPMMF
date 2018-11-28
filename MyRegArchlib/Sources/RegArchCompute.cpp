@@ -45,9 +45,16 @@
             }           
 	}
         
-        double RegArchLLH(const cRegArchModel& myModelArma, const cRegArchValue& myGivenValue)
+        
+        /*!
+	 * \fn double RegArchLLH(const cRegArchModel& myModelArma, const cRegArchValue& myGivenValue)
+	 * \param const cRegArchModel &myModelArma: the model ARMA which will compute conditional mean, var and residuals
+         * \param const cRegArchValue &myGivenValueOld: Object where the (Yt) are stored
+         * \brief Compute the log-likelyhood of (Yt)
+	 */
+        double RegArchLLH(const cRegArchModel& myModelArma, const cRegArchValue& myGivenValueOld)
         {
-                       
+            cRegArchValue myGivenValue(myGivenValueOld);
             uint T = myGivenValue.mYt.GetSize();
             
             double sum_h = 0;

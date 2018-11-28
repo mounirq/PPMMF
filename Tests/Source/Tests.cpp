@@ -57,11 +57,11 @@ int main(int argc, char* argv[])
 	myModelArma.SetMean(myCondMeanArma) ;
 	myModelArma.SetVar(myCondVar) ;
 	myModelArma.SetResid(myNormResid) ;
-	cout << "Modele : " ;
+	cout << "\n\n---------Modele---------\n" ;
 	myModelArma.Print() ;
 	
 	cRegArchModel myModelArmaCp(myModelArma) ;
-	cout << "Copie du modele : " ;
+	cout << "\n\n---------Copie du modele ---------\n" ;
 	myModelArmaCp.Print() ;
 
 	// Observations
@@ -71,6 +71,7 @@ int main(int argc, char* argv[])
 	{
 		myGivenValue.mYt[t] = t;
 	}
+        
 
 	cDVector myMeans(myNData);
         cDVector myVars(myNData);
@@ -85,33 +86,32 @@ int main(int argc, char* argv[])
                 myVars[t] = myCondVar.ComputeVar(t, myGivenValue);
                 myGivenValue.mHt[t] = myVars[t];
 	} 
-        // TESTS SANS ALEAS pour u(t)        
-	/*cout << "Moyennes conditionnelles ARMA pur gaussien : " << endl ;
+        // TESTS SANS ALEAS pour u(t)
+        cout << "\n\n---------TESTS SANS ALEAS pour u(t)---------\n";
+	cout << "Moyennes conditionnelles ARMA pur gaussien : " << endl ;
 	myMeans.Print();
 
         cout << "\n"<< "Variances conditionnelles ARMA pur gaussien : " << endl ;
-	myVars.Print();*/
+	myVars.Print();
         
-       /* // TESTS de l'aléa 
+        // TESTS de l'aléa 
+        cout << "\n\n---------TESTS de l'aléa---------\n";
         cout << "\n Vecteurs résidus:\n";
-        cDVector vecteurResidus(100);
-        myNormResid.Generate(100, vecteurResidus);
-        vecteurResidus.Print();*/
+        cDVector vecteurResidus(10);
+        myNormResid.Generate(10, vecteurResidus);
+        vecteurResidus.Print();
         
 	// Simulation        
-	uint myNSample = 10;
-	cRegArchValue mySimulData(1);
+	uint myNSample = 5;
+	cRegArchValue mySimulData(myNSample);
 	cDVector mySimulVector(myNSample);
-        /*mySimulData.mYt[0] = 0;
-        mySimulData.mEpst[0] = -0.1;
-        mySimulData.mHt[0] = 1;
-        mySimulData.mMt[0] = 0.1;
-        mySimulData.mUt[0] = -1.726;*/
+
         cRegArchModel modelVide;
         modelVide.SetMean(myCondMeanArma) ;
 	modelVide.SetVar(myCondVar) ;
-	RegArchLib::RegArchSimul(3, mySimulData, myModelArma) ;
-        cout << "\nPrint Residus : \n";
+	RegArchLib::RegArchSimul(4, mySimulData, myModelArma) ;
+        cout << "\n\n---------SIMULATION---------\n";
+        cout << "\nResidus : \n";
         mySimulData.mEpst.Print();
         cout << "\nValeurs h(t)\n";
         mySimulData.mHt.Print();
@@ -119,14 +119,14 @@ int main(int argc, char* argv[])
         mySimulData.mUt.Print();
         cout << "\nValeurs Esperance\n";
         mySimulData.mMt.Print();
-	cout << "\nValeurs simulees : \n" << endl ;
+	cout << "\nValeurs simulees : \n";
 	mySimulVector = mySimulData.mYt;
 	mySimulVector.Print();
         
         // Calcul de vraisemblance
         double myLoglikelihood = 0.;
         myLoglikelihood = RegArchLLH(myModelArma, myGivenValue);
-        cout << "\nLog-vraisemblance : " << myLoglikelihood << endl;
+        cout << "\n\n---------Log-vraisemblance---------\n" << myLoglikelihood << endl;
         
 	return 0 ;
 

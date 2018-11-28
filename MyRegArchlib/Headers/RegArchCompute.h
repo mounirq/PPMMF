@@ -13,8 +13,8 @@
  \date dec-18-2006 - Last change feb-18-2011
 */
 namespace RegArchLib {
-// please complete function profile
-extern _DLLEXPORT_ double RegArchLLH(const cRegArchModel& myModelArma, const cRegArchValue& myGivenValue);
+
+extern _DLLEXPORT_ double RegArchLLH(const cRegArchModel& myModelArma, const cRegArchValue& myGivenValueOld);
 extern _DLLEXPORT_ void RegArchSimul(uint t, cRegArchValue &vectorPast, const cRegArchModel& model) ; ///< Simulation of a general RegArch Model
 }
 
