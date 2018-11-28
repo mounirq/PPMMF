@@ -8,7 +8,12 @@
 */
  namespace RegArchLib {
 
-	// please complete
+	/*!
+	 * \fn void RegArchSimul(uint t, cRegArchValue &Data, const cRegArchModel& model)
+	 * \param uint t: time until data is computed
+         * \param cRegArchValue &Data: Object where the data simulated is stored
+         * \param const cRegArchModel& model: mathematic model for the mean, var and residuals
+	 */
 	void RegArchSimul(uint t, cRegArchValue &Data, const cRegArchModel& model)
 	{
             double varianceCond = 0;
