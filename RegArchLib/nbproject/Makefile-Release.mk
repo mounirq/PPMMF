@@ -21,7 +21,7 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-Linux-x86
+CND_PLATFORM=GNU-Linux
 CND_DLIB_EXT=so
 CND_CONF=Release
 CND_DISTDIR=dist
@@ -49,8 +49,10 @@ OBJECTFILES= \
 	${OBJECTDIR}/Sources/cGarch.o \
 	${OBJECTDIR}/Sources/cMa.o \
 	${OBJECTDIR}/Sources/cNormResiduals.o \
+	${OBJECTDIR}/Sources/cRegArchGradient.o \
 	${OBJECTDIR}/Sources/cRegArchModel.o \
-	${OBJECTDIR}/Sources/cRegArchValue.o
+	${OBJECTDIR}/Sources/cRegArchValue.o \
+	${OBJECTDIR}/Sources/cStudentResiduals.o
 
 
 # C Compiler Flags
@@ -71,11 +73,11 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libMyRegArchlib.${CND_DLIB_EXT}
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libRegArchLib.${CND_DLIB_EXT}
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libMyRegArchlib.${CND_DLIB_EXT}: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libRegArchLib.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libMyRegArchlib.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libRegArchLib.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
 
 ${OBJECTDIR}/Sources/RegArchCompute.o: Sources/RegArchCompute.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Sources
@@ -147,6 +149,11 @@ ${OBJECTDIR}/Sources/cNormResiduals.o: Sources/cNormResiduals.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cNormResiduals.o Sources/cNormResiduals.cpp
 
+${OBJECTDIR}/Sources/cRegArchGradient.o: Sources/cRegArchGradient.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cRegArchGradient.o Sources/cRegArchGradient.cpp
+
 ${OBJECTDIR}/Sources/cRegArchModel.o: Sources/cRegArchModel.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Sources
 	${RM} "$@.d"
@@ -157,13 +164,18 @@ ${OBJECTDIR}/Sources/cRegArchValue.o: Sources/cRegArchValue.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cRegArchValue.o Sources/cRegArchValue.cpp
 
+${OBJECTDIR}/Sources/cStudentResiduals.o: Sources/cStudentResiduals.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cStudentResiduals.o Sources/cStudentResiduals.cpp
+
 # Subprojects
 .build-subprojects:
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libMyRegArchlib.${CND_DLIB_EXT}
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libRegArchLib.${CND_DLIB_EXT}
 
 # Subprojects
 .clean-subprojects:

@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
-CND_ARTIFACT_NAME_Debug=tests
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/tests
+CND_ARTIFACT_NAME_Debug=libRegArchLib.so
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/libRegArchLib.so
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
-CND_PACKAGE_NAME_Debug=tests.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/tests.tar
+CND_PACKAGE_NAME_Debug=libRegArchLib.so.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/libRegArchLib.so.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux
-CND_ARTIFACT_NAME_Release=tests
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/tests
+CND_ARTIFACT_NAME_Release=libRegArchLib.so
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/libRegArchLib.so
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
-CND_PACKAGE_NAME_Release=tests.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/tests.tar
+CND_PACKAGE_NAME_Release=libRegArchLib.so.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/libRegArchLib.so.tar
 #
 # include compiler specific variables
 #

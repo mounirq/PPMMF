@@ -12,7 +12,6 @@
                 <make-dep-project>../VectorAndMatrix</make-dep-project>
                 <make-dep-project>../Error</make-dep-project>
                 <make-dep-project>../RegArchLib</make-dep-project>
-                <make-dep-project>../MyRegArchlib</make-dep-project>
             </make-dep-projects>
             <sourceRootList>
                 <sourceRootElem>Headers</sourceRootElem>

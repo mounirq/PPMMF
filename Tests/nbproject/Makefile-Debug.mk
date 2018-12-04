@@ -21,7 +21,7 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-Linux-x86
+CND_PLATFORM=GNU-Linux
 CND_DLIB_EXT=so
 CND_CONF=Debug
 CND_DISTDIR=dist
@@ -52,17 +52,17 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L../VectorAndMatrix/build/Debug/GNU-Linux-x86 -L../Error/build/Debug/GNU-Linux-x86 -L../MyRegArchlib/dist/Debug/GNU-Linux-x86 -Wl,-rpath,../VectorAndMatrix/dist/Debug/GNU-Linux-x86 -L../VectorAndMatrix/dist/Debug/GNU-Linux-x86 -lVectorAndMatrix -Wl,-rpath,../Error/dist/Debug/GNU-Linux-x86 -L../Error/dist/Debug/GNU-Linux-x86 -lError -lgsl -lgslcblas -Wl,-rpath,../MyRegArchlib/dist/Debug/GNU-Linux-x86 -L../MyRegArchlib/dist/Debug/GNU-Linux-x86 -lMyRegArchlib
+LDLIBSOPTIONS=-L../RegArchLib/dist/Debug/GNU-Linux -L../VectorAndMatrix/build/Debug/GNU-Linux-x86 -L../Error/build/Debug/GNU-Linux-x86 -Wl,-rpath,../RegArchLib/dist/Debug/GNU-Linux -L../RegArchLib/dist/Debug/GNU-Linux -lRegArchLib -Wl,-rpath,../VectorAndMatrix/dist/Debug/GNU-Linux -L../VectorAndMatrix/dist/Debug/GNU-Linux -lVectorAndMatrix -Wl,-rpath,../Error/dist/Debug/GNU-Linux -L../Error/dist/Debug/GNU-Linux -lError -lgsl -lgslcblas
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tests: ../VectorAndMatrix/dist/Debug/GNU-Linux-x86/libVectorAndMatrix.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tests: ../RegArchLib/dist/Debug/GNU-Linux/libRegArchLib.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tests: ../Error/dist/Debug/GNU-Linux-x86/libError.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tests: ../VectorAndMatrix/dist/Debug/GNU-Linux/libVectorAndMatrix.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tests: ../MyRegArchlib/dist/Debug/GNU-Linux-x86/libMyRegArchlib.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tests: ../Error/dist/Debug/GNU-Linux/libError.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tests: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -71,13 +71,13 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tests: ${OBJECTFILES}
 ${OBJECTDIR}/Source/Tests.o: Source/Tests.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Source
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../Error/Headers -I../VectorAndMatrix/Headers -I../RegArchLib/Headers -IHeaders -I../MyRegArchlib/Headers -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Source/Tests.o Source/Tests.cpp
+	$(COMPILE.cc) -g -I../Error/Headers -I../VectorAndMatrix/Headers -I../RegArchLib/Headers -IHeaders -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Source/Tests.o Source/Tests.cpp
 
 # Subprojects
 .build-subprojects:
+	cd ../RegArchLib && ${MAKE}  -f Makefile CONF=Debug
 	cd ../VectorAndMatrix && ${MAKE}  -f Makefile CONF=Debug
 	cd ../Error && ${MAKE}  -f Makefile CONF=Debug
-	cd ../MyRegArchlib && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -86,9 +86,9 @@ ${OBJECTDIR}/Source/Tests.o: Source/Tests.cpp
 
 # Subprojects
 .clean-subprojects:
+	cd ../RegArchLib && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../VectorAndMatrix && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../Error && ${MAKE}  -f Makefile CONF=Debug clean
-	cd ../MyRegArchlib && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

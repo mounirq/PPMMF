@@ -666,10 +666,10 @@ namespace VectorAndMatrixNameSpace
 
 	/*!
 		\fn cGSLVector::SetThisWithSubVector
-		\param const cGSLVector& theSrcVect, const uint theBegIndex
+		\param const cGSLVector& theSrcVect, uint theBegIndex
 		\brief fills this[i] with theSrcVect[theBegIndex + i] i = 0 ... size of this
 	*/
-	void cGSLVector::SetThisWithSubVector(const cGSLVector& theSrcVect, const uint theBegIndex)
+	void cGSLVector::SetThisWithSubVector(const cGSLVector& theSrcVect, uint theBegIndex)
 	{
 	uint myDestSize = GetSize() ;
 	uint mySrcSize = theSrcVect.GetSize() ;
@@ -686,7 +686,7 @@ namespace VectorAndMatrixNameSpace
 		\param cGSLVector& theDestVect, uint theBegIndex
 		\brief fills theSrcVect[theBegIndex + i] with *this[i], i = 0 ... size of this
 	*/
-	void cGSLVector::SetSubVectorWithThis(cGSLVector& theDestVect, const uint theBegIndex)
+	void cGSLVector::SetSubVectorWithThis(cGSLVector& theDestVect, uint theBegIndex)
 	{
 	uint myDestSize = theDestVect.GetSize() ;
 	uint mySrcSize = GetSize() ;

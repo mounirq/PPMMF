@@ -2,7 +2,6 @@
 //
 
 #include "StdAfxTestCPlusPlus.h"
-#include "StdAfxRegArchLib.h"
 
 using namespace ErrorNameSpace;
 using namespace VectorAndMatrixNameSpace;
@@ -30,14 +29,6 @@ int main(int argc, char* argv[])
 	cMa myMa(2) ;
 	myMa.Set(0.8, 0) ;
 	myMa.Set(0.6, 1) ;
-        
-        cGarch myGarch(2);
-        myGarch.Set(0.8, 0);
-        myGarch.Set(0.6, 1);
-        
-        cArch myArch(2);
-        myArch.Set(0.8, 0);
-        myArch.Set(-0.2, 1);
 	
 	cCondMean myCondMeanArma ;
 	myCondMeanArma.SetOneMean(0, myConst) ;
@@ -48,8 +39,6 @@ int main(int argc, char* argv[])
 
 	cCondVar myCondVar ;
 	myCondVar.SetOneVar(0, myConstVar) ;
-        myCondVar.SetOneVar(1, myGarch);
-        myCondVar.SetOneVar(2, myArch);
 	
 	cNormResiduals myNormResid ;
 
@@ -57,77 +46,54 @@ int main(int argc, char* argv[])
 	myModelArma.SetMean(myCondMeanArma) ;
 	myModelArma.SetVar(myCondVar) ;
 	myModelArma.SetResid(myNormResid) ;
-	cout << "\n\n---------Modele---------\n" ;
+	cout << "Modele : " ;
 	myModelArma.Print() ;
 	
-	cRegArchModel myModelArmaCp(myModelArma) ;
-	cout << "\n\n---------Copie du modele ---------\n" ;
-	myModelArmaCp.Print() ;
 
-	// Observations
-	uint myNData = 10 ;
-	cRegArchValue myGivenValue(myNData) ;
-	for(uint t=0; t < myGivenValue.mYt.GetSize(); t++)
-	{
-		myGivenValue.mYt[t] = t;
-	}
-        
-
-	cDVector myMeans(myNData);
-        cDVector myVars(myNData);
-        // Moyennes conditionnelles
-
-	for(uint t=0; t < myGivenValue.mYt.GetSize(); t++)
-	{
-		myMeans[t] = myCondMeanArma.ComputeMean(t, myGivenValue);
-                myGivenValue.mUt[t] = myGivenValue.mYt[t] - myMeans[t];
-		myGivenValue.mMt[t] = myMeans[t];
-                
-                myVars[t] = myCondVar.ComputeVar(t, myGivenValue);
-                myGivenValue.mHt[t] = myVars[t];
-	} 
-        // TESTS SANS ALEAS pour u(t)
-        cout << "\n\n---------TESTS SANS ALEAS pour u(t)---------\n";
-	cout << "Moyennes conditionnelles ARMA pur gaussien : " << endl ;
-	myMeans.Print();
-
-        cout << "\n"<< "Variances conditionnelles ARMA pur gaussien : " << endl ;
-	myVars.Print();
-        
-        // TESTS de l'aléa 
-        cout << "\n\n---------TESTS de l'aléa---------\n";
-        cout << "\n Vecteurs résidus:\n";
-        cDVector vecteurResidus(10);
-        myNormResid.Generate(10, vecteurResidus);
-        vecteurResidus.Print();
-        
-	// Simulation        
-	uint myNSample = 5;
-	cRegArchValue mySimulData(myNSample);
+	// Simulation
+	uint myNSample = 10;
+	cRegArchValue mySimulData;
 	cDVector mySimulVector(myNSample);
-
-        cRegArchModel modelVide;
-        modelVide.SetMean(myCondMeanArma) ;
-	modelVide.SetVar(myCondVar) ;
-	RegArchLib::RegArchSimul(4, mySimulData, myModelArma) ;
-        cout << "\n\n---------SIMULATION---------\n";
-        cout << "\nResidus : \n";
-        mySimulData.mEpst.Print();
-        cout << "\nValeurs h(t)\n";
-        mySimulData.mHt.Print();
-        cout << "\nValeurs u(t)\n";
-        mySimulData.mUt.Print();
-        cout << "\nValeurs Esperance\n";
-        mySimulData.mMt.Print();
-	cout << "\nValeurs simulees : \n";
+	RegArchLib::RegArchSimul(myNSample, myModelArma, mySimulData) ;
+	cout << "Valeurs simulees : " << endl ;
 	mySimulVector = mySimulData.mYt;
 	mySimulVector.Print();
-        
-        // Calcul de vraisemblance
-        double myLoglikelihood = 0.;
-        myLoglikelihood = RegArchLLH(myModelArma, myGivenValue);
-        cout << "\n\n---------Log-vraisemblance---------\n" << myLoglikelihood << endl;
-        
+
+
+	/*********
+	 * ARMA pur gaussien : gradient
+	 *******/
+	cout << "Modele : " ;
+	myModelArma.Print() ;
+
+	uint myNParam = myModelArma.GetNParam() ;
+	cDVector myGrad0(myNParam) ;
+	cDVector myGrad1(myNParam) ;
+
+	// approximation par differences finies
+	NumericRegArchGradLLH(myModelArma, mySimulData, myGrad0, 1e-6) ;
+	cout << "Grad numerique" << endl << myGrad0 ;
+	cRegArchGradient myGradData(&myModelArma) ;
+	RegArchGradLLH(myModelArma, mySimulData, myGrad1) ;
+	cout << "Grad calcule" << endl << myGrad1 ;
+	cDVector myDiff = myGrad0 - myGrad1 ;
+	for (register uint i = 0 ; i < myNParam ; i++)
+        {
+		if (myGrad0[i] != 0)
+                {
+                    myDiff[i] /= myGrad0[i] ;
+                }
+                else
+                {
+                    if (myGrad0[i] == 0)
+                        myDiff[i] = 0.0;
+                    else
+                        myDiff[i] = nanf("");
+                }
+        }
+	cout << "erreur relative (%)" << endl << 100*myDiff ;
+
+
 	return 0 ;
 
 

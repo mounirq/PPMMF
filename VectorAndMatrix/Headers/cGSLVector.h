@@ -83,8 +83,8 @@ namespace VectorAndMatrixNameSpace{
 			cGSLVector& operator -=(double* theSrcVect) ;///< *this -= theSrcVect
 			cGSLVector& operator *=(double theVal) ;///< *this *= theVal
 			cGSLVector& operator /=(double theVal) ;///< *this /= theVal
-			void SetThisWithSubVector(const cGSLVector& theSrcVect, const uint theBegIndex) ;///< *this[i] = theSrcVect[i+theBegIndex] for all i
-			void SetSubVectorWithThis(cGSLVector& theDestVect, const uint theBegIndex) ;///< theDestVect[i+theBegIndex]=*this[i] for all i
+			void SetThisWithSubVector(const cGSLVector& theSrcVect, uint theBegIndex) ;///< *this[i] = theSrcVect[i+theBegIndex] for all i
+			void SetSubVectorWithThis(cGSLVector& theDestVect, uint theBegIndex) ;///< theDestVect[i+theBegIndex]=*this[i] for all i
 			cGSLVector& operator +(double theVal) ;///< returns *this[i]+theVal for all i
 			cGSLVector& operator +(const cGSLVector& theVect) ;///< returns *this[i]+theVect[i] for all i
 			cGSLVector& operator +(double* theVect2) ;///< returns *this + theVect2
