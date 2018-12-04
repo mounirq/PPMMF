@@ -167,7 +167,7 @@ namespace RegArchLib {
 	 * \param bool theHeader: true if an header line is printed. Default, true
 	 * \param char* theSep: separator character. Default, "\t".
 	*/
-	void cRegArchValue::PrintValue(ostream& theOut, bool theHeader, const char* theSep)
+	void cRegArchValue::PrintValue(ostream& theOut, bool theHeader, char* theSep)
 	{
 	int mySize = (int)mYt.GetSize() ;
 	uint	myNbCol = 0 ;

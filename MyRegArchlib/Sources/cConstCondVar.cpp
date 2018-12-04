@@ -36,7 +36,11 @@ namespace RegArchLib {
 
 	cAbstCondVar* cConstCondVar::PtrCopy() const
 	{
-            return new cConstCondVar(this->mvCste);
+		 cConstCondVar *myConstCondVar = new cConstCondVar();
+
+		 myConstCondVar->copy(*this);
+
+		 return myConstCondVar;
 	}
 
 	/*!
@@ -116,6 +120,22 @@ namespace RegArchLib {
 	}
 
 	/*!
+	 * \fn cAbstCondVar& cConstCondVar::operator =(cAbstCondVar& theSrc)
+	 * \param cAbstCondVar& theSrc: source to be recopied
+	 * \details An error occurs if theSrc is not an cConstCondVar class parameter
+	 */
+	cAbstCondVar& cConstCondVar::operator =(cAbstCondVar& theSrc)
+	{
+	cConstCondVar* myConstCondVar = dynamic_cast<cConstCondVar *>(&theSrc) ;
+		if (myConstCondVar)
+		{	
+			copy(*myConstCondVar) ;
+		}
+		else
+			throw cError("wrong conditional variance class") ;
+		return *this ;
+	}
+	/*!
 	 * \fn double cConstCondVar::ComputeVar(uint theDate, const cRegArchValue& theData) const
 	 * \param int theDate: date of the computation
 	 * \param cRegArchValue& theData: past datas.
@@ -123,12 +143,36 @@ namespace RegArchLib {
 	 */
 	double cConstCondVar::ComputeVar(uint theDate, const cRegArchValue& theData) const
 	{
-		return this->mvCste;	
+		return mvCste ;
 	}
 
 	uint cConstCondVar::GetNParam(void) const
 	{
 		return 1 ;
+	}
+	uint cConstCondVar::GetNLags(void) const
+	{
+		return 0 ;
+	}
+
+	void cConstCondVar::ComputeGrad(uint theDate, const cRegArchValue& theValue, cRegArchGradient& theGradData, cAbstResiduals* theResids)
+	{
+		theGradData.mCurrentGradVar[theGradData.GetNMeanParam()] = 1.0 ;
+	}
+
+	void cConstCondVar::RegArchParamToVector(cDVector& theDestVect, uint theIndex)
+	{
+	uint mySize = theDestVect.GetSize() ;
+		if (theIndex >= mySize)
+			throw cError("Wrong size") ;
+		theDestVect[theIndex] = mvCste;
+	}
+
+	void cConstCondVar::VectorToRegArchParam(const cDVector& theSrcVect, uint theIndex)
+	{
+		if (1 + theIndex > theSrcVect.GetSize())
+			throw cError("Wrong size") ;
+		mvCste = theSrcVect[theIndex] ;
 	}
 
 	void cConstCondVar::copy(const cConstCondVar& theConstCondVar)

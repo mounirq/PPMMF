@@ -5,6 +5,8 @@
 #include "RegArchDef.h"
 #include "cAbstCondMean.h"
 #include "cRegArchValue.h"
+#include "cRegArchGradient.h"
+#include <vector>
 
 /*!
 	\file cCondMean.h
@@ -41,12 +43,13 @@ namespace RegArchLib {
 		friend ostream& operator <<(ostream& theOut, const cCondMean& theCondMean) ; ///< Print the conditional mean model
 		void GetCondMeanType(eCondMeanEnum* theCodeType) const ; ///< Return the type of each mean component	
 		cCondMean& operator =(cCondMean& theSrc) ; ///< affectation operator
-		// Complete source		
 		double ComputeMean(uint theDate, const cRegArchValue& theData) const ; ///< Return conditional mean.
-		/** Number of parameters in CondMean */
 		uint GetNParam(void) const ;
 		double Get(uint theNumMean=0, uint theIndex=0, uint theNumParam=0) ;
-
+		uint GetNLags(void) const  ;
+		void ComputeGrad(uint theDate, const cRegArchValue& theData, cRegArchGradient& theGradData, cAbstResiduals* theResiduals) ;
+		void RegArchParamToVector(cDVector& theDestVect, uint theIndex) const ;
+		void VectorToRegArchParam(const cDVector& theSrcVect, uint theIndex = 0) ;
 	} ;
 }
 

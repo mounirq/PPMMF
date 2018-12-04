@@ -16,7 +16,7 @@
 namespace RegArchLib {
 	/*! 
 	 * \class cRegArchValue
-	 * \brief Class to store computational data
+	 * \brief Class to store computational datas
 	 */
 	class _DLLEXPORT_ cRegArchValue
 	{
@@ -36,7 +36,7 @@ namespace RegArchLib {
 		void ReAlloc(cDVector& theYt) ;///< Memory reallocation
 		void ReAlloc(cDVector& theYt, cDMatrix& theXt) ;///< Memory reallocation
 		void ReAllocXt(uint theNRow, uint theNCol) ;
-		void PrintValue(ostream& theOut=cout, bool theHeader=true, const char* theSep="\t") ;///< Print the datas
+		void PrintValue(ostream& theOut=cout, bool theHeader=true, char* theSep="\t") ;///< Print the datas
 		void ComputeMeanAndVar(double& theMean, double& theVar) ;
 	};
 

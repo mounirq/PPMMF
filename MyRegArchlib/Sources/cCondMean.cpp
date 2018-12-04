@@ -55,7 +55,7 @@ namespace RegArchLib {
 		{	for (register uint i = 0 ; i < mvNCondMean ; i++)
 				if (mvCondMean[i] != NULL)
 				{	mvCondMean[i]->Delete() ;
-					delete mvCondMean[i] ;
+    				delete mvCondMean[i] ;
 					mvCondMean[i] = (cAbstCondMean *)NULL ;
 				}
 		}
@@ -149,7 +149,7 @@ namespace RegArchLib {
 	{
 		return mvCondMean[theNumMean]->Get(theIndex, theNumParam) ;
 	}
-	
+
 	/*!
 	 * \fn ostream& operator <<(ostream& theOut, const cCondMean& theCondMean)
 	 * \param ostream& theOut: output (file or screen).
@@ -170,10 +170,13 @@ namespace RegArchLib {
 	 * \param cCondMean& theSrc: source class
 	 */
 	cCondMean& cCondMean::operator =(cCondMean& theSrc)
-	{            
-            mvNCondMean = theSrc.mvNCondMean;
-            mvCondMean = theSrc.mvCondMean;
-            return *this;
+	{	Delete() ;
+	
+		mvNCondMean = theSrc.GetNMean() ;
+		mvCondMean.resize(mvNCondMean) ;
+		for (register uint i = 0 ; i < mvNCondMean ; i++)
+			mvCondMean[i] = theSrc.GetOneMean(i)->PtrCopy() ;
+		return *this ;
 	}
 
 	/*!
@@ -185,12 +188,11 @@ namespace RegArchLib {
 	 */
 	double cCondMean::ComputeMean(uint theDate, const cRegArchValue& theData) const
 	{
-            double result = 0;
-            for (uint i=0; i<mvNCondMean; i++)
-            {
-                result += mvCondMean[i]->ComputeMean(theDate, theData);
-            }
-            return result; 
+	double myMean = 0.0 ;
+	uint myNMean = GetNMean() ;
+		for (uint i = 0 ; i < myNMean ; i++)
+			myMean += mvCondMean[i]->ComputeMean(theDate, theData) ;
+		return myMean ;
 	}
 
 	uint cCondMean::GetNParam(void) const
@@ -201,5 +203,41 @@ namespace RegArchLib {
 		return myNParam ;
 	}
 
+	uint cCondMean::GetNLags(void) const
+	{
+	uint myNLags = 0 ;
+		for (register uint i = 0 ; i < mvNCondMean ; i++)
+			myNLags = MAX(myNLags, mvCondMean[i]->GetNLags());
+		return myNLags ;
+	}
+
+	void cCondMean::ComputeGrad(uint theDate, const cRegArchValue& theValue, cRegArchGradient& theGradData, cAbstResiduals* theResids)
+	{
+	uint myIndex = 0 ;
+		theGradData.mCurrentGradMu = 0.0L ;
+		for (register uint i = 0 ; i < mvNCondMean ; i++)
+		{	mvCondMean[i]->ComputeGrad(theDate, theValue, theGradData, myIndex, theResids) ;
+			myIndex += mvCondMean[i]->GetNParam() ;
+		}
+	}
+
+
+	void cCondMean::RegArchParamToVector(cDVector& theDestVect, uint theIndex) const
+	{
+	uint myIndexCour = theIndex ;
+		for (register uint i = 0 ; i < mvNCondMean ; i++)
+		{	mvCondMean[i]->RegArchParamToVector(theDestVect, myIndexCour) ;
+			myIndexCour += mvCondMean[i]->GetNParam() ;
+		}
+	}
+
+	void cCondMean::VectorToRegArchParam(const cDVector& theSrcVect, uint theIndex)
+	{
+	uint myIndexCour = theIndex ;
+		for (register uint i = 0 ; i < mvNCondMean ; i++)
+		{	mvCondMean[i]->VectorToRegArchParam(theSrcVect, myIndexCour) ;
+			myIndexCour += mvCondMean[i]->GetNParam() ;
+		}
+	}
 
 }//namespace

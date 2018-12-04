@@ -28,14 +28,20 @@ namespace RegArchLib {
 	}
 
 	/*!
-	 * \fn cAbstResiduals* cNormResiduals::::PtrCopy()
+	 * \fn cAbstCondVar* cNormResiduals::::PtrCopy()
 	 */
 
 	cAbstResiduals* cNormResiduals::PtrCopy() const
 	{
-		// Complete
-            bool theSimulFlag = this->mtR == NULL ? false : true;
-            return new cNormResiduals(NULL, theSimulFlag);
+		cNormResiduals *mycNormResiduals = NULL ;
+		bool mySimulFlag = false ;
+
+		if (mtR != NULL)
+			mySimulFlag = true ;
+
+		mycNormResiduals = new cNormResiduals(NULL, mySimulFlag);
+
+		return mycNormResiduals;
 	}
 
 	/*!
@@ -57,10 +63,11 @@ namespace RegArchLib {
 	
 	void cNormResiduals::Generate(uint theNSample, cDVector& theYt) const 
 	{
-            theYt.ReAlloc(theNSample);
-            for (int i=0; i<theNSample; i++){
-                theYt[i] = gsl_ran_gaussian(this->mtR, 1);
-            }   
+		theYt.ReAlloc(theNSample) ;
+
+
+		for (register uint t = 0 ; t < theNSample ; t++)
+			theYt[t] = gsl_ran_ugaussian(mtR) ;
 	}
 
 	/*!
@@ -70,7 +77,7 @@ namespace RegArchLib {
 	 */
 	double cNormResiduals::LogDensity(double theX) const
 	{
-            return std::log(gsl_ran_gaussian_pdf(theX, 1));
+		return(-LOG_SQRT_2_PI - theX*theX/2.0) ;
 	}
 
 	/*!
@@ -81,6 +88,39 @@ namespace RegArchLib {
 	uint cNormResiduals::GetNParam(void) const
 	{
 		return 0 ;
+	}
+	
+	/*!
+	 * \fn static void GradLogDensity(double theX, cDVector& theGrad)
+	 * \brief Compute the derivative of log density of a Gaussian distribution with respect to the random variable (theGrad[0])
+	 * \e and the gradient of log density with respect to the model parameters (other components in theGrad)
+	 * \param theX double: value of the random variable
+	 * \param theGrad cDVector&: concatenation of derivatives with respect to the random variable and the model parameters
+	 */
+	static void GradLogDensity(double theX, cDVector& theGrad)
+	{
+		theGrad[0] = -theX ;
+	}
+
+	/*!
+	 * \fn void cNormResiduals::ComputeGrad(uint theDate, const cRegArchValue& theValue, cRegArchGradient& theGradData)
+	 * \brief Compute the derivative of log density with respect to the random variable (theGradData[0]) \e and the gradient
+	 * of log density with respect to the model parameters (other components in theGradData)
+	 * \param theDate uint: time at which gradient is computed
+	 * \param theValue const cRegArchValue&: value of the random variable
+	 * \param theGradData cRegArchGradient&: concatenation of derivatives with respect to the random variable and the model parameters
+	 */
+	void cNormResiduals::ComputeGrad(uint theDate, const cRegArchValue& theValue, cRegArchGradient& theGradData)
+	{
+		GradLogDensity(theValue.mEpst[theDate], theGradData.mCurrentGradDens) ;
+	}
+
+	void cNormResiduals::RegArchParamToVector(cDVector& theDestVect, uint theIndex) const
+	{
+	}
+
+	void cNormResiduals::VectorToRegArchParam(const cDVector& theSrcVect, uint theIndex)
+	{
 	}
 
 

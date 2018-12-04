@@ -40,12 +40,15 @@ namespace RegArchLib {
 	}
 
 	/*!
-	 * \fn cAr::PtrCopy()
+	 * \fn cAbstCondMean* cAr::PtrCopy()
 	 */
 	cAbstCondMean* cAr::PtrCopy() const
 	{
-		// complete
-            return new cAr(this->mvAr);
+		 cAr *mycAr = new cAr();
+
+		 mycAr->copy(*this);
+
+		 return mycAr;
 	}
 
 
@@ -126,6 +129,25 @@ namespace RegArchLib {
 	}
 
 	/*!
+	 * \fn cAbstCondMean& cAr::operator =(cAbstCondMean& theSrc)
+	 * \param cAbstCondMean& theSrc: source to be recopied
+	 * \details An error occurs if theSrc is not an cAr class parameter 
+	 */
+	cAbstCondMean& cAr::operator =(cAbstCondMean& theSrc)
+	{
+		cAr* myAr = dynamic_cast<cAr *>(&theSrc) ;
+		
+		if (myAr)
+		{	
+			copy(*myAr) ;
+			SetCondMeanType(eAr) ;
+		}
+		else
+			throw cError("wrong conditional mean class") ;
+		return *this ;
+	}
+
+	/*!
 	 * \fn double cAr::ComputeMean(uint theDate, const cRegArchValue& theData) const
 	 * \brief Compute conditional mean component for an AR model
 	 * \param int theDate: date of the computation
@@ -134,22 +156,44 @@ namespace RegArchLib {
 	 */
 	double cAr::ComputeMean(uint theDate, const cRegArchValue& theData) const
 	{
-            
-            double result = 0;
-            uint size = this->mvAr.GetSize();
-            for (uint i=1; i<=size; i++)
-            {
-                if (theDate  >= i)
-                {
-                    result += this->mvAr[i-1] * theData.mYt[theDate - i];
-                }
-            }
-            return result;
+	uint myp = mvAr.GetSize() ;
+	double myRes = 0.0 ;
+		for (register uint i = 1 ; i <= MIN(myp, theDate) ; i++)
+			myRes += mvAr[i-1] * theData.mYt[theDate-i] ;
+		return myRes ;
 	}
 
 	uint cAr::GetNParam(void) const
 	{
 		return mvAr.GetSize() ;
+	}
+
+	uint cAr::GetNLags(void) const
+	{
+		return 0 ;
+	}
+
+
+	void cAr::ComputeGrad(uint theDate, const cRegArchValue& theValue, cRegArchGradient& theGradData,  uint theBegIndex, cAbstResiduals* theResids)
+	{
+		for (register uint i = 1 ; i <= MIN(mvAr.GetSize(), theDate) ; i++)
+			theGradData.mCurrentGradMu[theBegIndex+i-1] += theValue.mYt[theDate - i] ;
+	}
+
+	void cAr::RegArchParamToVector(cDVector& theDestVect, uint theIndex)
+	{
+	uint mySize = mvAr.GetSize() ;
+		if (theDestVect.GetSize() < mySize + theIndex)
+			throw cError("Wrong size") ;
+		mvAr.SetSubVectorWithThis(theDestVect, theIndex) ;
+	}
+
+	void cAr::VectorToRegArchParam(const cDVector& theSrcVect, uint theIndex)
+	{
+	uint mySize = theSrcVect.GetSize() ;
+		if (mvAr.GetSize() + theIndex > mySize)
+			throw cError("Wrong size") ;
+		mvAr.SetThisWithSubVector(theSrcVect, theIndex) ;
 	}
 
 	void cAr::copy(const cAr& theAr)

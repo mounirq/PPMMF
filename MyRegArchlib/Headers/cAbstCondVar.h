@@ -4,6 +4,7 @@
 
 #include "RegArchDef.h"
 #include "cRegArchValue.h"
+#include "cRegArchGradient.h"
 /*!
 	\file cAbstCondVar.h
 	\brief Definition of the abstract class to implement conditional variance
@@ -27,8 +28,7 @@ namespace RegArchLib {
 	public :
 		cAbstCondVar(eCondVarEnum theType = eNotKnown) ; ///< A simple constructor
 		virtual ~cAbstCondVar() ;  ///< A simple destructor
-		// Complete
-		virtual cAbstCondVar* PtrCopy() const = 0 ; /// < Return a copy of *this
+		virtual cAbstCondVar* PtrCopy() const = 0 ; /// < Return a copy of *this		
 		eCondVarEnum GetCondVarType(void) const ; ///< Return the variance type code
 		virtual void Delete(void) = 0 ; ///< delete
 		virtual void Print(ostream& theOut=cout) const = 0 ;  ///< Print the parameters
@@ -38,9 +38,13 @@ namespace RegArchLib {
 		virtual double Get(uint theIndex=0, uint theNumParam=0) = 0 ;
 		virtual void ReAlloc(uint theSize, uint theNumParam=0) = 0 ; ///< Allocation of the model parameters
 		virtual void ReAlloc(const cDVector& theVectParam, uint theNumParam=0) = 0 ; ///< Allocation of the model parameters
+//		virtual cAbstCondVar& operator=(cAbstCondVar& theSrc)=0 ; ///< Setation operator for cAbstCondVar
 		virtual double ComputeVar(uint theDate, const cRegArchValue& theData) const=0 ; ///< Return conditional variance.
-		/** Return the number of parameters in CondVar */
 		virtual uint GetNParam(void) const = 0 ;
+		virtual uint GetNLags(void) const = 0 ;
+		virtual void ComputeGrad(uint theDate, const cRegArchValue& theData, cRegArchGradient& theGradData, cAbstResiduals* theResiduals) = 0 ;
+		virtual void RegArchParamToVector(cDVector& theDestVect, uint theIndex = 0)  = 0 ;
+		virtual void VectorToRegArchParam(const cDVector& theSrcVect, uint theIndex = 0) = 0 ;
 	} ;
 
 }

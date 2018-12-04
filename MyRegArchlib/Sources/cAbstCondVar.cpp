@@ -11,6 +11,18 @@
 namespace RegArchLib {
 
 	/*!
+	 * \fn template<class T> static T* TemplateCreateRealCondVar(void)
+	 * \param: void
+	 * \brief Template function used by CreateRealCondVar
+	 */
+	template<class T> 
+	static T* TemplateCreateRealCondVar(void)
+	{
+	T*	myCondVar = new T ;
+		return myCondVar ;
+	}
+
+	/*!
 	 * \fn cAbstCondVar::cAbstCondVar(eCondVarEnum theType)
 	 * \param eCondVarEnum theType: Conditional variance type code. Default eNotKnown.
 	 */
@@ -45,5 +57,7 @@ namespace RegArchLib {
 	{	theAbstCondVar.Print(theOut) ;
 		return theOut ;
 	}
+
+
 
 }//namespace

@@ -85,6 +85,25 @@ namespace RegArchLib {
 	}
 
 	/*!
+	 * \fn cAbstResiduals& cAbstResiduals::operator =(const cAbstResiduals& theSrc)
+	 * \param const cAbstResiduals& theSrc
+	 */
+
+	cAbstResiduals& cAbstResiduals::operator =(const cAbstResiduals& theSrc)
+	{
+		mvDistr = theSrc.mvDistr ;
+
+		// random generator parameters recopy
+		if (theSrc.mtR != NULL)
+			gsl_rng_memcpy(mtR, theSrc.mtR) ;
+		else
+			mtR = NULL ;
+	// copy of the vector of parameters
+		mDistrParameter = theSrc.mDistrParameter ;
+		return *this ;
+	}
+
+	/*!
 	 * \fn inline eDistrTypeEnum cAbstResiduals::GetDistrType(void) const
 	  * \param void
 	 */

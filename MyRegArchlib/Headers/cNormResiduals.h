@@ -3,6 +3,7 @@
 #define _CNORMRESIDUALS_H_
 #include "cAbstResiduals.h"
 #include "cRegArchValue.h"
+#include "cRegArchGradient.h"
 /*!
  \file cNormResiduals.h
  \brief Definition of the class for N(0, 1) conditional distribution.
@@ -22,13 +23,16 @@ namespace RegArchLib {
 	{
 	public :
 		cNormResiduals(const cDVector* theDistrParameter=NULL, bool theSimulFlag=true) ; ///< a simple constructor
-		virtual ~cNormResiduals() ; ///< a simple destructor		
-		cAbstResiduals* PtrCopy() const ; /// < Return a copy of *this
-		void Print(ostream& theOut) const ; ///< print the distribution type		
-		void Generate(uint theNSample, cDVector& theYt) const ; ///< Draw a sample from residual distribution 		
+		virtual ~cNormResiduals() ; ///< a simple destructor
+		virtual cAbstResiduals* PtrCopy() const ; /// < Return a copy of *this
+		void Print(ostream& theOut) const ; ///< print the distribution type
+		void Generate(uint theNSample, cDVector& theYt) const ; ///< Draw a sample from residual distribution 
 		double LogDensity(double theX) const ;
-		/** Return the number of parameters in distribution */
 		uint GetNParam(void) const ;
+		/** Compute the derivatives of the log-density with respect to the variable \e and the parameters */
+		void ComputeGrad(uint theDate, const cRegArchValue& theData, cRegArchGradient& theGradData) ;
+		void RegArchParamToVector(cDVector& theDestVect, uint theIndex) const ;
+		void VectorToRegArchParam(const cDVector& theSrcVect, uint theIndex = 0) ;
 	} ;
 
 }

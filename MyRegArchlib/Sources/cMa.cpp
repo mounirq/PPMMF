@@ -44,7 +44,11 @@ namespace RegArchLib {
 	 */
 	cAbstCondMean* cMa::PtrCopy() const
 	{
-            return new cMa(this->mvMa);
+		 cMa *mycMa = new cMa();
+
+		 mycMa->copy(*this);
+
+		 return mycMa;
 	}
 
 	/*!
@@ -82,6 +86,10 @@ namespace RegArchLib {
 		else
 			mvMa[theIndex]=theValue ;
 	}
+
+	// This is some comment by the teachers. It is included in
+	// the 3rd version delivered to the students, but is not
+	// supposed to appear anywhere in a subject source code.
 
 	/*!
 	 * \fn void cMa::Set(const cDVector& theVectParam, uint theNumParam)
@@ -122,6 +130,30 @@ namespace RegArchLib {
 	}
 
 	/*!
+	 * \fn cAbstCondMean& cMa::operator =(const cAbstCondMean &theSrc)
+	 * \param cAbstCondMean &theSrc: source to be recopied
+	 * \details an error occurs if theSrc is not an cMA class parameter 
+	 */
+
+	/*!
+	 * \fn cAbstCondMean& cAr::operator =(cAbstCondMean& theSrc)
+	 * \param cAbstCondMean& theSrc: source to be recopied
+	 * \details An error occurs if theSrc is not an cAr class parameter
+	 */
+	cAbstCondMean& cMa::operator =(cAbstCondMean& theSrc)
+	{
+		cMa* myMa = dynamic_cast<cMa *>(&theSrc) ;
+		if (myMa)
+		{	
+			copy(*myMa) ;
+			SetCondMeanType(eMa) ;
+		}
+		else
+			throw cError("wrong conditional mean class") ;
+		return *this ;
+	}
+
+	/*!
 	 * \fn cMa::ComputeMean(uint theDate, const cRegArchValue& theData) const
 	 * \param int theDate: date of the computation
 	 * \param cRegArchValue& theData: past datas.
@@ -129,21 +161,47 @@ namespace RegArchLib {
 	 */
 	double cMa::ComputeMean(uint theDate, const cRegArchValue& theData) const
 	{
-            double result = 0;
-            uint size = this->mvMa.GetSize();
-            for (uint i=1; i<=size; i++)
-            {
-                if (theDate >= i)                    
-                {
-                    result += this->mvMa[i-1] * theData.mUt[theDate-i];
-                }
-            }
-            return result;
+	uint myq = mvMa.GetSize() ;
+
+	double myRes = 0.0 ;
+		for (register uint i = 1 ; i <= MIN(myq, theDate) ; i++)
+			myRes += mvMa[i-1] * theData.mUt[theDate-i] ;
+		return myRes ;
 	}
 
 	uint cMa::GetNParam(void) const
 	{
 		return mvMa.GetSize() ;
+	}
+	uint cMa::GetNLags(void) const
+	{
+		return mvMa.GetSize() ;
+	}
+
+	void cMa::ComputeGrad(uint theDate, const cRegArchValue& theValue, cRegArchGradient& theGradData, uint theBegIndex, cAbstResiduals* theResids)
+	{
+	uint myq = mvMa.GetSize() ;
+	register uint i ;
+		for (i = 1 ; i <= MIN(myq, theDate) ; i++)
+			theGradData.mCurrentGradMu[theBegIndex+i-1] += theValue.mUt[theDate - i] ;
+		for (i = 1 ; i <= MIN(myq, theDate) ; i++)
+			theGradData.mCurrentGradMu -=  mvMa[i-1] * theGradData.mGradMt[i-1] ;
+	}
+
+	void cMa::RegArchParamToVector(cDVector& theDestVect, uint theIndex)
+	{
+	uint mySize = mvMa.GetSize() ;
+		if (theDestVect.GetSize() < mySize + theIndex)
+			throw cError("Wrong size") ;
+		mvMa.SetSubVectorWithThis(theDestVect, theIndex) ;
+	}
+
+	void cMa::VectorToRegArchParam(const cDVector& theSrcVect, uint theIndex)
+	{
+	uint mySize = theSrcVect.GetSize() ;
+		if (mvMa.GetSize() + theIndex > mySize)
+			throw cError("Wrong size") ;
+		mvMa.SetThisWithSubVector(theSrcVect, theIndex) ;
 	}
 
 	void cMa::copy(const cMa& theMa)

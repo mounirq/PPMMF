@@ -28,11 +28,15 @@ namespace RegArchLib {
 	}
 
 	/*!
-	 * \fn cAbstCondMean* cConst::PtrCopy()
+	 * \fn cAbstCondMean* cMa::PtrCopy()
 	 */
 	cAbstCondMean* cConst::PtrCopy() const
 	{
-            return new cConst(this->mvConst);
+		cConst *mycConst = new cConst();
+
+		mycConst->copy(*this);
+
+		return mycConst;
 	}
 
 	/*!
@@ -111,18 +115,57 @@ namespace RegArchLib {
 	}
 
 	/*!
+	 * \fn cAbstCondMean& cConst::operator =(cAbstCondMean &theSrc)
+	 * \param cAbstCondMean &theSrc
+	 * \details theSrc must be a cConst parameter
+	 */
+	cAbstCondMean& cConst::operator =(cAbstCondMean& theSrc)
+	{
+		cConst* myConst = dynamic_cast<cConst *>(&theSrc) ;
+		if (myConst)
+		{	
+			copy(*myConst) ;
+			SetCondMeanType(eConst) ;
+		}
+		else
+			throw cError("wrong conditional mean class") ;
+		return *this ;
+	}
+
+	/*!
 	 * \param int theDate: date of the computation
 	 * \param cRegArchValue& theData: past datas.
 	 * \details theData must not be updated here.
 	 */
 	double cConst::ComputeMean(uint theDate, const cRegArchValue& theData) const
 	{
-            return this->mvConst;
+		return mvConst ;
 	}
 
 	uint cConst::GetNParam(void) const
+	{	return 1 ;
+	}
+
+	uint cConst::GetNLags(void) const
+	{	return 0 ;
+	}
+
+	void cConst::ComputeGrad(uint theDate, const cRegArchValue& theValue, cRegArchGradient& theGradData, uint theBegIndex, cAbstResiduals* theResids)
 	{
-		return 1 ;
+		theGradData.mCurrentGradMu[theBegIndex] += 1.0 ;
+	}
+
+	void cConst::RegArchParamToVector(cDVector& theDestVect, uint theIndex)
+	{
+		if ((int)theDestVect.GetSize() + 1 < (int)theIndex)
+			throw cError("Wrong size") ;
+		theDestVect[theIndex] = mvConst ;
+	}
+	void cConst::VectorToRegArchParam(const cDVector& theSrcVect, uint theIndex)
+	{
+		if (1 + theIndex > theSrcVect.GetSize())
+			throw cError("Wrong size") ;
+		mvConst = theSrcVect[theIndex] ;
 	}
 
 	void cConst::copy(const cConst& theConst)
