@@ -31,6 +31,7 @@
 #include "cStudentResiduals.h"
 
 #include "cCondMean.h"
+#include "cCondVar.h"
 #include "RegArchCompute.h"
 #include "cRegArchModel.h"
 #include "cRegArchValue.h"
